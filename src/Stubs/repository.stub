@@ -3,7 +3,7 @@
 namespace App\Repositories\{{className}};
 
 use {{modelName}};
-use Erfanwd\RepositoryPattern\BaseRepository;
+use App\Repositories\BaseRepository;
 
 class {{className}}Repository extends BaseRepository implements {{className}}RepositoryInterface
 {

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\{{className}};
 
-use Erfanwd\RepositoryPattern\BaseRepositoryInterface;
+use App\Repositories\BaseRepositoryInterface;
 
 interface {{className}}RepositoryInterface implement BaseRepositoryInterface
 {

@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Repositories\{{className}};
+
+use {{modelName}};
+use Erfanwd\RepositoryPattern\BaseRepository;
+
+class {{className}}Repository extends BaseRepository implements {{className}}RepositoryInterface
+{
+    public function __construct({{className}} $model)
+    {
+        parent::__construct($model);
+    }
+}

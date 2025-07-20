@@ -1,0 +1,24 @@
+{
+  "name": "erfanwd/laravel-repository-pattern",
+  "description": "A Laravel package to auto-generate repositories and interfaces based on models",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Erfanwd\\RepositoryPattern\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Erfanwd\\RepositoryPattern\\RepositoryPatternServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "illuminate/support": "^10.0|^11.0|^12.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

@@ -25,27 +25,36 @@ class Generator
         $this->generateServiceProvider();
     }
 
-    protected function generateInterface()
+    protected function generateInterface($modelName)
     {
-        $path = app_path("Repositories/{$this->class}/{$this->class}RepositoryInterface.php");
+        $path = app_path("Repositories/{$modelName}/{$modelName}RepositoryInterface.php");
+
+        if (File::exists($path)) {
+            return;
+        }
 
         if (!File::exists(dirname($path))) {
             File::makeDirectory(dirname($path), 0755, true);
         }
 
         $stub = $this->getStub('interface');
-        $content = str_replace('{{className}}', $this->class, $stub);
+        $content = str_replace('{{className}}', $modelName, $stub);
         File::put($path, $content);
     }
 
-    protected function generateRepository()
+
+    protected function generateRepository($modelName, $modelNameSpace)
     {
-        $path = app_path("Repositories/{$this->class}/{$this->class}Repository.php");
+        $path = app_path("Repositories/{$modelName}/{$modelName}Repository.php");
+
+        if (File::exists($path)) {
+            return;
+        }
 
         $stub = $this->getStub('repository');
         $content = str_replace(
             ['{{className}}', '{{modelName}}'],
-            [$this->class, $this->model],
+            [$modelName, $modelNameSpace],
             $stub
         );
 

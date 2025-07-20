@@ -24,3 +24,8 @@ then simply:
 ```bash
 php artisan make:repository ModelName
 ```
+
+you can use this command for all of your models:
+```bash
+php artisan make:repository --sync
+```

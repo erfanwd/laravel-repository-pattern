@@ -52,7 +52,7 @@ class Generator
         File::put($path, $content);
     }
 
-    protected function generateServiceProvider()
+    protected function generateServiceProvider(): void
     {
         $path = app_path('Providers/RepositoriesServiceProvider.php');
 
@@ -61,11 +61,22 @@ class Generator
             File::put($path, $stub);
         }
 
-        $binding = "        \$this->app->bind(\\App\\Repositories\\{$this->class}\\{$this->class}RepositoryInterface::class, \\App\\Repositories\\{$this->class}\\{$this->class}Repository::class);";
+        $binding = "\$this->app->bind(\\App\\Repositories\\{$this->class}\\{$this->class}RepositoryInterface::class, \\App\\Repositories\\{$this->class}\\{$this->class}Repository::class);";
 
         $content = File::get($path);
         if (!str_contains($content, $binding)) {
-            $content = str_replace('// bindings', $binding . PHP_EOL . '        // bindings', $content);
+            $targetLine = '$this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);';
+
+            if (str_contains($content, $targetLine)) {
+                $content = str_replace(
+                    $targetLine,
+                    $targetLine . PHP_EOL . '        ' . $binding,
+                    $content
+                );
+            } else {
+                $content = str_replace('// bindings', $binding . PHP_EOL . '        // bindings', $content);
+            }
+
             File::put($path, $content);
         }
     }

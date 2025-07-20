@@ -17,7 +17,7 @@ composer require erfanwd/laravel-repository-pattern
 publish provider using:
 
 ```bash
-php artisan vendor:publish --provider=Erfanwd\RepositoryPattern\RepositoryGeneratorServiceProvider
+php artisan vendor:publish --tag=repository-base
 ```
 
 then simply:

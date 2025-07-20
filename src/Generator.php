@@ -79,6 +79,23 @@ class Generator
 
             File::put($path, $content);
         }
+
+        $bootstrapPath = base_path('bootstrap/providers.php');
+        $providerClass = 'App\\Providers\\RepositoriesServiceProvider::class,';
+
+        if (File::exists($bootstrapPath)) {
+            $providersContent = File::get($bootstrapPath);
+
+            if (!str_contains($providersContent, $providerClass)) {
+                $providersContent = str_replace(
+                    '];',
+                    "    {$providerClass}" . PHP_EOL . '];',
+                    $providersContent
+                );
+
+                File::put($bootstrapPath, $providersContent);
+            }
+        }
     }
 
     protected function getStub(string $type): string

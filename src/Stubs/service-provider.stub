@@ -10,7 +10,7 @@ class RepositoriesServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         // bindings
     }
 
